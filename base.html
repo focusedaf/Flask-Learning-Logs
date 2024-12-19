@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Value{% endblock %}</title>
+</head>
+<body>
+   <!-- any content that is outside of this block content will always be present when the base file is inherited by the index file so to make it more clear i'll be using the p tag -->
+    <p>This will always be there</p>
+    {% block content %} {% endblock %}
+</body>
+</html>
