@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} Forms {% endblock %}
+
+{% block content %}
+<form method="POST" action ="{{url_for('index')}}">
+<input type="text" name="username" placeholder="Enter your name"><br>
+<input type="password" name="password" placeholder="Enter your password"><br>
+<input type="submit" value="Login"><br>
+</form>
+
+
+<h1>File Upload</h1>
+<form method ='POST'action="{{url_for('file_upload')}}"enctype ='multipart/form-data'>
+    <input type="file" name="file" accept="text/plain"reuquired>
+    <input type="submit" value="upload file">
+</form>
+
+
+<h1>Javascript JSON Request</h1>
+<button id="post_button">Send POST Request</button>
+<script>
+const postButton = document.getElementById('post_button');    
+postButton.addEventListener('click', () => {
+    const jsonData = {
+        name : 'mike', greeting: 'hello'
+    };
+
+    fetch('{{url_for("handle_post")}}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(jsonData), // Corrected JSON.stringify typo
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Assuming the server responds with JSON
+        })
+        .then(data => {
+            console.log('Success:', data);
+            // Handle successful response
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
+        });
+});
+</script>
+
+
+{% endblock %}
