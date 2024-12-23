@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Other Page {% endblock %}
+
+{% block content %} 
+
+<h1>RED PILL OR THE BLUE PILL?</h1>
+
+<h2>Let's talk about Filters</h2>
+<h3>As you know in python there are various built-in methods for ex: .upper() etc so in jinja the Filters are used using the pipe sign(|)</h3>
+<p>{{newvalue}}</p>
+<p>{{newvalue|upper}}</p>
+<p>{{newvalue|lower}}</p>
+<p>{{newvalue|title}}</p>
+<p>{{newvalue|reverse}}</p>
+<p>{{newvalue|repeat}}</p>
+<p>{{newvalue|repeat(5)}}</p>
+
+{% endblock %}
